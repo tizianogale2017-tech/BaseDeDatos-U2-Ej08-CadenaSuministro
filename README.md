@@ -32,3 +32,27 @@ Modelar la cadena de suministro de una mayorista de electrónica: depósitos, ca
 ## Resultado
 
 ![Diagrama](captura.png)
+
+---
+
+## Normalización
+
+Se normaliza el documento `Orden_Compra` con sus registros de `Orden_Producto`. En todas las tablas la PK va en la primera columna y las FK al final. Los datos son de ejemplo.
+
+**Forma 0.** Una sola tabla con todo junto. Hay celdas con listas: cada orden compra puede tener varios registros de orden producto.
+
+![Forma 0](normalizacion/00-forma-0.png)
+
+**1FN.** Cada elemento de la lista pasa a su propia fila y la clave queda compuesta: (`id_orden`, `id_producto`).
+
+![1FN](normalizacion/01-1fn.png)
+
+**2FN.** Los datos de orden compra dependen solo de `id_orden` y los de producto solo de `id_producto`. Se separan en `Orden_Compra` y `Producto`; `Orden_Producto` queda con la clave compuesta y lo que depende de ambos.
+
+![2FN](normalizacion/02-2fn.png)
+
+**3FN.** Los datos de `Proveedor` y `Deposito` dependen de su propio identificador y no de la PK de orden compra, así que pasan a tablas aparte. En el modelo final cada tabla usa su id propio.
+
+![3FN](normalizacion/03-3fn.png)
+
+Para que se vea la lista en la Forma 0, se agregó un registro de ejemplo en `Orden_Producto` para el orden compra 1.
