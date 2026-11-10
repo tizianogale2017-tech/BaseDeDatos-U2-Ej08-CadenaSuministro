@@ -56,3 +56,9 @@ Se normaliza el documento `Orden_Compra` con sus registros de `Orden_Producto`. 
 ![3FN](normalizacion/03-3fn.png)
 
 Para que se vea la lista en la Forma 0, se agregó un registro de ejemplo en `Orden_Producto` para el orden compra 1.
+
+---
+
+## SQL
+
+El script `script.sql` crea las tablas con sus claves primarias y foráneas y carga datos de ejemplo. Está probado en SQLite (con `PRAGMA foreign_keys = ON;`).
